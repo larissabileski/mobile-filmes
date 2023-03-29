@@ -1,10 +1,10 @@
-import {Component} from 'react'
-import { Text, View, StyleSheet } from "react-native";
+import { Component } from "react";
+import { Text, View, ScrollView, StyleSheet } from "react-native";
 import Card from "./src/components/Card";
 
 export default class App extends Component {
   state = {
-    filmes : [
+    filmes: [
       {
         capa: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSum0nKRdm6cKd5c2kPJd6Ik-M00eYFYqttzT__a1NWOWueZtbj",
         titulo: "Por Lugares Incríveis",
@@ -29,25 +29,31 @@ export default class App extends Component {
         capa: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSPIwh-wreoOZDC1Mcd_I4XYPh2Z-Nz_NiK-QdgtGEbCJPDlFYC",
         titulo: "Encanto",
         genero: "Infantil/Comédia",
-      }
-    ]
-  } 
+      },
+    ],
+  };
 
   deletar(pos) {
-    const filmes = [...this.state.filmes]
-    filmes.splice(pos, 1)
-    this.setState({ filmes } )    
+    const filmes = [...this.state.filmes];
+    filmes.splice(pos, 1);
+    this.setState({ filmes });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 25, fontWeight: "bold" }}> Filmes </Text>
-        <View style={styles.conteudo}>
-          {this.state.filmes.map((filme, index) => (
-            <Card key={index} filme={filme} onDelete={() => this.deletar(index)}/>          
+        <ScrollView>
+          <Text style={{ fontSize: 25, fontWeight: "bold" }}> Filmes </Text>
+          <View style={styles.conteudo}>
+            {this.state.filmes.map((filme, index) => (
+              <Card
+                key={index}
+                filme={filme}
+                onDelete={() => this.deletar(index)}
+              />
             ))}
-        </View>
+          </View>
+        </ScrollView>
       </View>
     );
   }

@@ -5,13 +5,11 @@ export default function Card(props) {
     <View style={styles.card}>
       <Image style={styles.filme} source={{ uri: props.filme.capa }} />
       <Text> {props.filme.titulo} </Text>
-      <Text style={{ fontSize: 12 }}> {props.filme.preco} </Text>
       <Text> {props.filme.genero} </Text>
       <Button
-        style={styles.button}
         onPress={props.onDelete}
-        title="delete"
-        color="red"
+        title="apagar"
+        color="black"
       />
     </View>
   );
@@ -21,7 +19,7 @@ const styles = StyleSheet.create({
   card: {
     backgroundColor: "gray",
     width: "40%",
-    height: 220,
+    height: 250,
     borderRadius: 10,
     margin: 20,
   },
@@ -30,8 +28,5 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 200,
     borderRadius: 10,
-  },
-  button: {
-    borderRadius: 1000,
   },
 });
