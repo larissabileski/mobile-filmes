@@ -1,12 +1,18 @@
-import { Image, Text, View, StyleSheet } from "react-native";
+import { Image, Text, View, Button, StyleSheet } from "react-native";
 
 export default function Card(props) {
   return (
     <View style={styles.card}>
       <Image style={styles.filme} source={{ uri: props.filme.capa }} />
-      <Text style={{ color: "dark" }}> {props.filme.titulo} </Text>
+      <Text> {props.filme.titulo} </Text>
       <Text style={{ fontSize: 12 }}> {props.filme.preco} </Text>
       <Text> {props.filme.genero} </Text>
+      <Button
+        style={styles.button}
+        onPress={props.onDelete}
+        title="delete"
+        color="red"
+      />
     </View>
   );
 }
@@ -22,7 +28,10 @@ const styles = StyleSheet.create({
   filme: {
     resizeMode: "stretch",
     width: "100%",
-    height: 140,
+    height: 200,
     borderRadius: 10,
+  },
+  button: {
+    borderRadius: 1000,
   },
 });
